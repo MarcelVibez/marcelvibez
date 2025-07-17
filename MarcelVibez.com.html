@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Coaching - Dein Weg zu mehr Gesundheit</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://placehold.co/1200x600/a0aec0/ffffff?text=Fitness+Hintergrundbild') no-repeat center center;
+            background-size: cover;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        .nav-link-active {
+            border-bottom: 2px solid #3b82f6; /* Tailwind blue-500 */
+            color: #3b82f6;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.6);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 0.5rem;
+            text-align: center;
+        }
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md fixed w-full z-50 top-0">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold text-blue-600">Fitness Coach</a>
+            <div class="hidden md:flex space-x-4">
+                <a href="#ueber-uns" class="nav-link text-gray-600 hover:text-blue-500 px-3 py-2 rounded-md">Über uns</a>
+                <a href="#anfragen" class="nav-link text-gray-600 hover:text-blue-500 px-3 py-2 rounded-md">Anfragen</a>
+                <a href="#impressum" class="nav-link text-gray-600 hover:text-blue-500 px-3 py-2 rounded-md">Impressum</a>
+                <a href="#datenschutz" class="nav-link text-gray-600 hover:text-blue-500 px-3 py-2 rounded-md">Datenschutz</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-600 hover:text-blue-500 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg">
+            <a href="#ueber-uns" class="block text-gray-600 hover:text-blue-500 px-4 py-2">Über uns</a>
+            <a href="#anfragen" class="block text-gray-600 hover:text-blue-500 px-4 py-2">Anfragen</a>
+            <a href="#impressum" class="block text-gray-600 hover:text-blue-500 px-4 py-2">Impressum</a>
+            <a href="#datenschutz" class="block text-gray-600 hover:text-blue-500 px-4 py-2">Datenschutz</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-section text-white pt-32 pb-16 md:pt-48 md:pb-24">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">Dein Weg zu Fitness und Gesundheit</h1>
+            <p class="text-lg md:text-xl mb-8">Professionelles Coaching mit lizenziertem Trainer (B & C Lizenz).</p>
+            <a href="#anfragen" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg text-lg transition duration-300">Jetzt Anfrage starten</a>
+        </div>
+    </header>
+
+    <!-- Über uns Section -->
+    <section id="ueber-uns" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Über Mich</h2>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/3 mb-8 md:mb-0 md:mr-8">
+                    <img src="https://placehold.co/400x400/e2e8f0/cbd5e0?text=Dein+Foto" alt="Profilbild des Trainers" class="rounded-lg shadow-lg mx-auto">
+                </div>
+                <div class="md:w-2/3">
+                    <p class="text-lg mb-4">
+                        Hallo! Ich bin [Dein Name], dein zertifizierter Fitnesstrainer mit B- und C-Lizenz. Meine Leidenschaft ist es, Menschen dabei zu unterstützen, ihre Fitnessziele zu erreichen und einen gesünderen Lebensstil zu führen.
+                    </p>
+                    <p class="text-lg mb-4">
+                        Mit meiner Expertise erstelle ich maßgeschneiderte Trainingspläne und biete individuelle Betreuung, egal ob du Anfänger bist oder deine Leistung auf das nächste Level heben möchtest. Ich lege Wert auf nachhaltige Erfolge und Freude an der Bewegung.
+                    </p>
+                    <h3 class="text-xl font-semibold mb-2 mt-6">Meine Qualifikationen:</h3>
+                    <ul class="list-disc list-inside text-lg mb-4">
+                        <li>Fitnesstrainer B-Lizenz</li>
+                        <li>Fitnesstrainer C-Lizenz</li>
+                        <li>[Weitere Qualifikation 1, z.B. Ernährungsberater]</li>
+                        <li>[Weitere Qualifikation 2, z.B. Spezialisierung auf...]</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Anfragen Section -->
+    <section id="anfragen" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Unverbindliche Anfrage</h2>
+            <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+                <p class="text-center text-lg mb-6">
+                    Interessiert an einem persönlichen Coaching? Fülle einfach das Formular aus und ich melde mich schnellstmöglich bei dir!
+                </p>
+                <form id="contactForm">
+                    <div class="mb-4">
+                        <label for="name" class="block text-gray-700 font-semibold mb-2">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Dein Name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="email" class="block text-gray-700 font-semibold mb-2">E-Mail</label>
+                        <input type="email" id="email" name="email" placeholder="deine.email@example.com" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="phone" class="block text-gray-700 font-semibold mb-2">Telefon (Optional)</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+49 123 456789" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div class="mb-6">
+                        <label for="message" class="block text-gray-700 font-semibold mb-2">Deine Nachricht / Deine Ziele</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Erzähl mir kurz, was deine Fitnessziele sind oder welche Fragen du hast." class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg text-lg transition duration-300">Anfrage senden</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impressum Section -->
+    <section id="impressum" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Impressum</h2>
+            <div class="max-w-3xl mx-auto bg-gray-50 p-8 rounded-lg shadow-md prose lg:prose-lg">
+                <h3>Angaben gemäß § 5 TMG</h3>
+                <p>
+                    [Marcel Bauer]<br>
+                    [Forster Weg 12]<br>
+                    [97453 Schonungen]<br>
+                    Deutschland
+                </p>
+
+                <h3>Kontakt</h3>
+                <p>
+                    Telefon: [01759535891]<br>
+                    E-Mail: [Marcel.Bauer@gmx.ch]
+                </p>
+
+                <h3>Berufsbezeichnung und berufsrechtliche Regelungen</h3>
+                <p>
+                    Gesetzliche Berufsbezeichnung: Fitnesstrainer<br>
+                    Verliehen durch: [HSFA Hamburg]<br>
+                    Folgende Lizenzen liegen vor: Fitnesstrainer B-Lizenz, Fitnesstrainer C-Lizenz
+                </p>
+
+                <h3>Umsatzsteuer-ID</h3>
+                <p>
+                    <i>[Wähle eine der beiden Optionen und lösche die andere]</i><br>
+                    <b>Option 1 (Kein Kleinunternehmer):</b><br>
+                    Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz: [Deine Umsatzsteuer-ID]<br>
+                    <b>Option 2 (Kleinunternehmer):</b><br>
+                    Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.
+                </p>
+
+                <h3>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h3>
+                <p>
+                    [Marcel Bauer]<br>
+                    [Forster Weg 12, 97453 Schonungen]
+                </p>
+
+                <h3>EU-Streitschlichtung</h3>
+                <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a>. Unsere E-Mail-Adresse finden Sie oben im Impressum.</p>
+
+                <h3>Verbraucherstreitbeilegung/Universalschlichtungsstelle</h3>
+                <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Datenschutz Section -->
+    <section id="datenschutz" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Datenschutzerklärung</h2>
+            <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-lg prose lg:prose-lg">
+                <p><strong>Hinweis:</strong> Dies ist eine allgemeine Vorlage. Bitte passen Sie die Details an und lassen Sie die Erklärung ggf. rechtlich prüfen.</p>
+                <h3>1. Datenschutz auf einen Blick</h3>
+                <p>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.</p>
+                
+                <h4>Wer ist verantwortlich für die Datenerfassung auf dieser Website?</h4>
+                <p>Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem Impressum dieser Website entnehmen.</p>
+                
+                <h4>Wie erfassen wir Ihre Daten?</h4>
+                <p>Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen (z.B. durch das Kontaktformular). Andere Daten werden automatisch beim Besuch der Website durch unsere IT-Systeme erfasst (z.B. technische Daten wie Ihr Internetbrowser).</p>
+                
+                <h3>2. Hosting</h3>
+                <p>Diese Website wird bei einem externen Dienstleister gehostet (z.B. GitHub Pages). Die dabei erfassten Daten (IP-Adressen, Kontaktanfragen etc.) werden auf den Servern des Hosters gespeichert. Der Einsatz erfolgt im Interesse einer sicheren, schnellen und effizienten Bereitstellung unseres Online-Angebots (Art. 6 Abs. 1 lit. f DSGVO).</p>
+
+                <h3>3. Allgemeine Hinweise und Pflichtinformationen</h3>
+                <p>Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Ihre Daten werden vertraulich und gemäß den gesetzlichen Vorschriften behandelt.</p>
+                <p>Sie haben jederzeit das Recht auf Auskunft, Berichtigung, Löschung oder Einschränkung der Verarbeitung Ihrer Daten sowie ein Widerspruchs- und Beschwerderecht. Details dazu entnehmen Sie den gesetzlichen Regelungen der DSGVO.</p>
+
+                <h3>4. Datenerfassung auf dieser Website</h3>
+                <h4>Kontaktformular</h4>
+                <p>Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter. Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO (Anfrage zur Vertragserfüllung) oder lit. f DSGVO (berechtigtes Interesse).</p>
+                
+                <h4>Server-Log-Dateien</h4>
+                <p>Der Provider der Seiten erhebt und speichert automatisch Informationen in Server-Log-Dateien (Browsertyp, Betriebssystem, Referrer URL, Hostname, Uhrzeit, IP-Adresse). Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenommen.</p>
+
+                <h3>Haftungsausschluss (Disclaimer)</h3>
+                <h4>Haftung für Inhalte</h4>
+                <p>Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen. Bei Bekanntwerden von Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.</p>
+                
+                <h4>Haftung für Links</h4>
+                <p>Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber verantwortlich. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.</p>
+                
+                <h4>Urheberrecht</h4>
+                <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung und Verbreitung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung. Soweit die Inhalte nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; <span id="currentYear"></span> [Dein Name / Fitness Coaching]. Alle Rechte vorbehalten.</p>
+            <p class="text-sm mt-2">
+                <a href="#ueber-uns" class="hover:text-blue-400">Über uns</a> |
+                <a href="#anfragen" class="hover:text-blue-400">Anfragen</a> |
+                <a href="#impressum" class="hover:text-blue-400">Impressum</a> |
+                <a href="#datenschutz" class="hover:text-blue-400">Datenschutz</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <h3 class="text-2xl font-bold text-green-500 mb-4">Nachricht gesendet!</h3>
+            <p>Vielen Dank für deine Anfrage. Ich werde mich so schnell wie möglich bei dir melden.</p>
+            <button onclick="closeModal()" class="mt-6 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg">Schließen</button>
+        </div>
+    </div>
+
+    <script>
+        // --- Mobile Menu Toggle ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // --- Smooth scroll for anchor links & active link styling ---
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') { // Handle top-link
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    return;
+                }
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    e.preventDefault();
+                    const navbarHeight = document.querySelector('nav').offsetHeight;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+                }
+            });
+        });
+
+        // --- Set current year in footer ---
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // --- Contact Form Submission (Placeholder) ---
+        const contactForm = document.getElementById('contactForm');
+        const successModal = document.getElementById('successModal');
+
+        contactForm.addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            console.log('Form data submitted (for demo purposes).');
+            successModal.style.display = "block";
+            contactForm.reset();
+        });
+
+        // --- Modal close functions ---
+        function closeModal() {
+            successModal.style.display = "none";
+        }
+        window.onclick = function(event) {
+            if (event.target == successModal) {
+                closeModal();
+            }
+        }
+
+        // --- Highlight active nav link on scroll ---
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('nav .nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const navbarHeight = document.querySelector('nav').offsetHeight;
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - navbarHeight - 50;
+                if (pageYOffset >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('nav-link-active');
+                if (link.getAttribute('href').includes(current) && current !== '') {
+                    link.classList.add('nav-link-active');
+                }
+            });
+             if (window.pageYOffset < sections[0].offsetTop - navbarHeight - 50) {
+                navLinks.forEach(link => link.classList.remove('nav-link-active'));
+            }
+        });
+    </script>
+</body>
+</html>
